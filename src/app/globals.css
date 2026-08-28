@@ -1,0 +1,184 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-main-50: var(--main-50);
+  --color-main-100: var(--main-100);
+  --color-main-200: var(--main-200);
+  --color-main-300: var(--main-300);
+  --color-main-400: var(--main-400);
+  --color-main-500: var(--main-500);
+  --color-main-600: var(--main-600);
+  --color-main-700: var(--main-700);
+  --color-main-800: var(--main-800);
+  --color-main-900: var(--main-900);
+  --color-accent-50: var(--accent-50);
+  --color-accent-100: var(--accent-100);
+  --color-accent-200: var(--accent-200);
+  --color-accent-300: var(--accent-300);
+  --color-accent-400: var(--accent-400);
+  --color-accent-500: var(--accent-500);
+  --color-accent-600: var(--accent-600);
+  --color-accent-700: var(--accent-700);
+  --color-accent-800: var(--accent-800);
+  --color-accent-900: var(--accent-900);
+  --color-fill: var(--fill);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-heading);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  /* Marca principal: verde-teal de ECOS (se conserva para no alterar el hero). */
+  --main-50: oklch(0.982 0.014 188);
+  --main-100: oklch(0.95 0.035 188);
+  --main-200: oklch(0.9 0.06 188);
+  --main-300: oklch(0.84 0.09 188);
+  --main-400: oklch(0.74 0.105 188);
+  --main-500: oklch(0.645 0.114 188);
+  --main-600: oklch(0.56 0.1 188);
+  --main-700: oklch(0.47 0.085 189);
+  --main-800: oklch(0.33 0.055 189);
+  --main-900: oklch(0.21 0.035 190);
+
+  /* Acento cálido: da el tono alegre y humano de la marca. */
+  --accent-50: oklch(0.98 0.022 85);
+  --accent-100: oklch(0.955 0.05 85);
+  --accent-200: oklch(0.925 0.082 84);
+  --accent-300: oklch(0.885 0.108 82);
+  --accent-400: oklch(0.845 0.13 79);
+  --accent-500: oklch(0.8 0.145 75);
+  --accent-600: oklch(0.705 0.14 65);
+  --accent-700: oklch(0.585 0.125 57);
+  --accent-800: oklch(0.44 0.09 55);
+  --accent-900: oklch(0.32 0.06 55);
+
+  /* Lienzo crema, más amable que el blanco puro. */
+  --fill: oklch(0.988 0.008 95);
+
+  --background: var(--fill);
+  --foreground: var(--main-900);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--main-900);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--main-900);
+  --primary: var(--main-600);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: var(--main-100);
+  --secondary-foreground: var(--main-800);
+  --muted: oklch(0.958 0.012 95);
+  --muted-foreground: oklch(0.505 0.022 195);
+  --accent: var(--accent-100);
+  --accent-foreground: var(--accent-900);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.905 0.014 95);
+  --input: oklch(0.905 0.014 95);
+  --ring: var(--main-400);
+  --chart-1: var(--main-500);
+  --chart-2: var(--accent-500);
+  --chart-3: var(--main-300);
+  --chart-4: var(--accent-700);
+  --chart-5: var(--main-700);
+  --radius: 0.75rem;
+  --sidebar: var(--main-50);
+  --sidebar-foreground: var(--main-900);
+  --sidebar-primary: var(--main-600);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: var(--accent-100);
+  --sidebar-accent-foreground: var(--accent-900);
+  --sidebar-border: oklch(0.905 0.014 95);
+  --sidebar-ring: var(--main-400);
+}
+
+.dark {
+  /* Verde profundo en vez de negro: mantiene la calidez en modo oscuro. */
+  --fill: oklch(0.185 0.02 192);
+
+  --background: var(--fill);
+  --foreground: oklch(0.972 0.012 188);
+  --card: oklch(0.235 0.024 192);
+  --card-foreground: oklch(0.972 0.012 188);
+  --popover: oklch(0.235 0.024 192);
+  --popover-foreground: oklch(0.972 0.012 188);
+  --primary: var(--main-400);
+  --primary-foreground: var(--main-900);
+  --secondary: oklch(0.285 0.028 192);
+  --secondary-foreground: oklch(0.972 0.012 188);
+  --muted: oklch(0.255 0.022 192);
+  --muted-foreground: oklch(0.735 0.022 190);
+  --accent: oklch(0.32 0.045 70);
+  --accent-foreground: var(--accent-200);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: var(--main-400);
+  --chart-1: var(--main-400);
+  --chart-2: var(--accent-400);
+  --chart-3: var(--main-200);
+  --chart-4: var(--accent-200);
+  --chart-5: var(--main-200);
+  --sidebar: oklch(0.235 0.024 192);
+  --sidebar-foreground: oklch(0.972 0.012 188);
+  --sidebar-primary: var(--main-400);
+  --sidebar-primary-foreground: var(--main-900);
+  --sidebar-accent: oklch(0.285 0.028 192);
+  --sidebar-accent-foreground: oklch(0.972 0.012 188);
+  --sidebar-border: oklch(1 0 0 / 12%);
+  --sidebar-ring: var(--main-400);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+  ::selection {
+    @apply bg-accent-200 text-accent-900;
+  }
+}
