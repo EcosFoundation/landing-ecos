@@ -28,6 +28,23 @@
   --color-accent-800: var(--accent-800);
   --color-accent-900: var(--accent-900);
   --color-fill: var(--fill);
+  --color-ecobit-night: var(--ecobit-night);
+  --color-ecobit-green: var(--ecobit-green);
+  --color-ecobit-yellow: var(--ecobit-yellow);
+  --color-enavol-night: var(--enavol-night);
+  --color-enavol-blue: var(--enavol-blue);
+  --color-enavol-orange: var(--enavol-orange);
+  --color-enavol-green: var(--enavol-green);
+  --color-climate-green: var(--climate-green);
+  --color-climate-rust: var(--climate-rust);
+  --color-climate-burgundy: var(--climate-burgundy);
+  --color-climate-cream: var(--climate-cream);
+  --color-nexo-night: var(--nexo-night);
+  --color-nexo-green: var(--nexo-green);
+  --color-nexo-yellow: var(--nexo-yellow);
+  --color-hero-surface: var(--hero-surface);
+  --color-hero-foreground: var(--hero-foreground);
+  --color-hero-primary: var(--hero-primary);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-heading);
@@ -94,6 +111,22 @@
   --accent-800: oklch(0.44 0.09 55);
   --accent-900: oklch(0.32 0.06 55);
 
+  /* Identidades de los proyectos del ecosistema ECOS. */
+  --ecobit-night: oklch(0.18 0.04 258);
+  --ecobit-green: oklch(0.79 0.18 165);
+  --ecobit-yellow: oklch(0.86 0.16 86);
+  --enavol-night: oklch(0.23 0.035 250);
+  --enavol-blue: oklch(0.43 0.2 260);
+  --enavol-orange: oklch(0.68 0.22 42);
+  --enavol-green: oklch(0.8 0.24 145);
+  --climate-green: oklch(0.63 0.16 132);
+  --climate-rust: oklch(0.5 0.12 40);
+  --climate-burgundy: oklch(0.31 0.08 28);
+  --climate-cream: oklch(0.97 0.018 82);
+  --nexo-night: oklch(0.19 0.05 252);
+  --nexo-green: oklch(0.8 0.1 155);
+  --nexo-yellow: oklch(0.87 0.17 92);
+
   /* Lienzo crema, más amable que el blanco puro. */
   --fill: oklch(0.988 0.008 95);
 
@@ -129,43 +162,80 @@
   --sidebar-accent-foreground: var(--accent-900);
   --sidebar-border: oklch(0.905 0.014 95);
   --sidebar-ring: var(--main-400);
+  --theme-logo-filter: brightness(0) saturate(100%);
+  --hero-logo-filter: none;
+  --hero-surface: var(--main-800);
+  --hero-foreground: oklch(0.985 0.008 188);
+  --hero-primary: var(--main-200);
+  --hero-scrim: color-mix(in oklab, var(--main-800) 3%, transparent);
+  --hero-top-scrim: linear-gradient(
+    to bottom,
+    color-mix(in oklab, var(--main-900) 30%, transparent),
+    transparent
+  );
+  --hero-bottom-scrim: linear-gradient(
+    to top,
+    color-mix(in oklab, var(--main-900) 68%, transparent),
+    color-mix(in oklab, var(--main-800) 38%, transparent) 55%,
+    transparent
+  );
+  --hero-copy-shadow: 0 2px 14px
+    color-mix(in oklab, var(--main-900) 55%, transparent);
 }
 
 .dark {
-  /* Verde profundo en vez de negro: mantiene la calidez en modo oscuro. */
-  --fill: oklch(0.185 0.02 192);
+  /* Turquesa nocturno inspirado en el color principal del logo de ECOS. */
+  --fill: oklch(0.255 0.05 188);
 
   --background: var(--fill);
-  --foreground: oklch(0.972 0.012 188);
-  --card: oklch(0.235 0.024 192);
-  --card-foreground: oklch(0.972 0.012 188);
-  --popover: oklch(0.235 0.024 192);
-  --popover-foreground: oklch(0.972 0.012 188);
+  --foreground: oklch(0.975 0.012 188);
+  --card: oklch(0.3 0.052 188);
+  --card-foreground: oklch(0.975 0.012 188);
+  --popover: oklch(0.3 0.052 188);
+  --popover-foreground: oklch(0.975 0.012 188);
   --primary: var(--main-400);
   --primary-foreground: var(--main-900);
-  --secondary: oklch(0.285 0.028 192);
-  --secondary-foreground: oklch(0.972 0.012 188);
-  --muted: oklch(0.255 0.022 192);
-  --muted-foreground: oklch(0.735 0.022 190);
+  --secondary: oklch(0.34 0.048 188);
+  --secondary-foreground: oklch(0.975 0.012 188);
+  --muted: oklch(0.315 0.038 188);
+  --muted-foreground: oklch(0.79 0.025 188);
   --accent: oklch(0.32 0.045 70);
   --accent-foreground: var(--accent-200);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 16%);
+  --border: oklch(1 0 0 / 16%);
+  --input: oklch(1 0 0 / 20%);
   --ring: var(--main-400);
   --chart-1: var(--main-400);
   --chart-2: var(--accent-400);
   --chart-3: var(--main-200);
   --chart-4: var(--accent-200);
   --chart-5: var(--main-200);
-  --sidebar: oklch(0.235 0.024 192);
-  --sidebar-foreground: oklch(0.972 0.012 188);
+  --sidebar: oklch(0.3 0.052 188);
+  --sidebar-foreground: oklch(0.975 0.012 188);
   --sidebar-primary: var(--main-400);
   --sidebar-primary-foreground: var(--main-900);
-  --sidebar-accent: oklch(0.285 0.028 192);
-  --sidebar-accent-foreground: oklch(0.972 0.012 188);
-  --sidebar-border: oklch(1 0 0 / 12%);
+  --sidebar-accent: oklch(0.34 0.048 188);
+  --sidebar-accent-foreground: oklch(0.975 0.012 188);
+  --sidebar-border: oklch(1 0 0 / 16%);
   --sidebar-ring: var(--main-400);
+  --theme-logo-filter: none;
+  --hero-logo-filter: none;
+  --hero-surface: var(--background);
+  --hero-foreground: var(--foreground);
+  --hero-primary: var(--primary);
+  --hero-scrim: color-mix(in oklab, var(--background) 18%, transparent);
+  --hero-top-scrim: linear-gradient(
+    to bottom,
+    color-mix(in oklab, var(--background) 70%, transparent),
+    transparent
+  );
+  --hero-bottom-scrim: linear-gradient(
+    to top,
+    color-mix(in oklab, var(--background) 88%, transparent),
+    color-mix(in oklab, var(--background) 65%, transparent) 50%,
+    transparent
+  );
+  --hero-copy-shadow: none;
 }
 
 @layer base {
@@ -180,5 +250,23 @@
   }
   ::selection {
     @apply bg-accent-200 text-accent-900;
+  }
+  .theme-logo {
+    filter: var(--theme-logo-filter);
+  }
+  .hero-logo {
+    filter: var(--hero-logo-filter);
+  }
+  .hero-scrim {
+    background: var(--hero-scrim);
+  }
+  .hero-top-scrim {
+    background: var(--hero-top-scrim);
+  }
+  .hero-bottom-scrim {
+    background: var(--hero-bottom-scrim);
+  }
+  .hero-copy {
+    text-shadow: var(--hero-copy-shadow);
   }
 }

@@ -13,6 +13,7 @@ import {
   ArrowDown,
   ArrowRight,
   Handshake,
+  Menu,
   Sprout,
   Wrench,
   X,
@@ -92,10 +93,10 @@ export function Hero() {
   }, [menuOpen]);
 
   const menuLinkClass =
-    "group flex items-center gap-4 font-heading text-3xl uppercase leading-[1.1] text-white transition-colors hover:text-main-400 sm:text-4xl";
+    "group flex items-center gap-4 font-heading text-3xl uppercase leading-[1.1] text-foreground transition-colors hover:text-primary sm:text-4xl";
 
   return (
-    <section className="relative isolate min-h-screen w-full overflow-hidden bg-main-900">
+    <section className="relative isolate min-h-screen w-full overflow-hidden bg-hero-surface">
       <motion.div
         style={{ scale: backgroundScale }}
         className="absolute inset-0 z-0"
@@ -118,39 +119,40 @@ export function Hero() {
         ))}
       </motion.div>
 
-      <div className="pointer-events-none absolute inset-0 z-10 bg-main-900/30" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-40 bg-gradient-to-b from-main-900/70 to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[65%] bg-gradient-to-t from-main-900 via-main-900/55 to-transparent" />
+      <div className="hero-scrim pointer-events-none absolute inset-0 z-10" />
+      <div className="hero-top-scrim pointer-events-none absolute inset-x-0 top-0 z-10 h-40" />
+      <div className="hero-bottom-scrim pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[70%]" />
 
       <motion.header
         initial={{ opacity: 0, y: -12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="absolute inset-x-0 top-0 z-20 flex items-center justify-between px-6 py-6 sm:px-10"
+        className="hero-copy absolute inset-x-0 top-0 z-20 flex items-center justify-between px-6 py-6 sm:px-10"
       >
         <button
           type="button"
           onClick={() => setMenuOpen(true)}
-          className="font-heading text-2xl uppercase leading-none tracking-wide text-white transition-colors hover:text-main-400"
+          className="flex items-center gap-2 font-heading text-2xl uppercase leading-none tracking-wide text-hero-foreground transition-colors hover:text-hero-primary"
         >
+          <Menu className="size-6" aria-hidden />
           Menú
         </button>
 
         <div className="flex items-center gap-4">
-          <ThemeToggle />
+          <ThemeToggle className="border-hero-foreground/40 text-hero-foreground hover:border-hero-primary hover:text-hero-primary" />
           <Image
             src="/logo.png"
             alt="Ecos Fundation"
             width={2560}
             height={254}
-            className="h-auto w-32 sm:w-40"
+            className="hero-logo h-auto w-32 sm:w-40"
           />
         </div>
       </motion.header>
 
       <motion.div
         style={{ y: contentY, opacity: contentOpacity }}
-        className="absolute inset-x-0 bottom-0 z-20 flex flex-col gap-10 px-6 pb-10 sm:px-10"
+        className="hero-copy absolute inset-x-0 bottom-0 z-20 flex flex-col gap-10 px-6 pb-10 sm:px-10"
       >
         <div className="grid gap-10 md:grid-cols-[7fr_5fr] md:items-end lg:gap-16">
           <motion.div
@@ -158,21 +160,21 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
           >
-            <h1 className="font-heading uppercase leading-[0.95] tracking-tight text-white">
+            <h1 className="font-heading uppercase leading-[0.95] tracking-tight text-hero-foreground">
               <span className="block text-4xl sm:text-6xl lg:text-7xl">
                 Transformamos
               </span>
               <span className="block text-4xl sm:text-6xl lg:text-7xl">
                 desafíos en{" "}
-                <span className="text-main-400">proyectos</span>
+                <span className="text-hero-primary">proyectos</span>
               </span>
               <span className="block text-4xl sm:text-6xl lg:text-7xl">
-                que generan <span className="text-main-400">impacto</span>
+                que generan <span className="text-hero-primary">impacto</span>
               </span>
             </h1>
 
             <div className="mt-6 flex items-center gap-6">
-              <p className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-white/60">
+              <p className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-hero-foreground/70">
                 Desliza para explorar
                 <ArrowDown className="size-3.5" aria-hidden />
               </p>
@@ -191,7 +193,9 @@ export function Hero() {
                     aria-label={`Imagen ${index + 1}`}
                     onClick={() => setActiveSlide(index)}
                     className={`h-0.5 w-6 transition-colors duration-300 ${
-                      index === activeSlide ? "bg-main-400" : "bg-white/25"
+                      index === activeSlide
+                        ? "bg-hero-primary"
+                        : "bg-hero-foreground/25"
                     }`}
                   />
                 ))}
@@ -205,7 +209,7 @@ export function Hero() {
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.25 }}
             className="flex max-w-xl flex-col gap-6 md:ml-auto md:items-end md:text-right"
           >
-            <p className="text-base leading-relaxed text-white/80 sm:text-lg">
+            <p className="text-base leading-relaxed text-hero-foreground/80 sm:text-lg">
               Diseñamos, implementamos y articulamos proyectos de innovación y
               sostenibilidad que conectan personas, instituciones y recursos
               para construir un futuro sostenible.
@@ -225,7 +229,7 @@ export function Hero() {
 
               <a
                 href="#nexo"
-                className="group inline-flex items-center gap-3 border border-white/40 bg-main-900/40 px-6 py-4 font-heading text-base uppercase leading-none tracking-wide text-white backdrop-blur-sm transition-colors duration-300 hover:border-white hover:bg-white hover:text-main-900 sm:text-lg"
+                className="group inline-flex items-center gap-3 border border-hero-foreground/40 bg-hero-surface/45 px-6 py-4 font-heading text-base uppercase leading-none tracking-wide text-hero-foreground backdrop-blur-sm transition-colors duration-300 hover:border-hero-foreground hover:bg-hero-foreground hover:text-hero-surface sm:text-lg"
               >
                 Trabaja con ECOS
                 <ArrowRight
@@ -241,18 +245,18 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.4 }}
-          className="grid gap-6 border-t border-white/15 pt-6 sm:grid-cols-3"
+          className="grid gap-6 border-t border-hero-foreground/15 pt-6 sm:grid-cols-3"
         >
           {pillars.map(({ title, description, Icon }) => (
             <li key={title} className="flex items-center justify-center gap-4">
-              <span className="flex size-11 shrink-0 items-center justify-center rounded-full border border-white/30 text-main-400">
+              <span className="flex size-11 shrink-0 items-center justify-center rounded-full border border-hero-foreground/30 text-hero-primary">
                 <Icon className="size-5" strokeWidth={1.75} aria-hidden />
               </span>
               <span>
-                <span className="block font-heading text-lg uppercase leading-none text-white">
+                <span className="block font-heading text-lg uppercase leading-none text-hero-foreground">
                   {title}
                 </span>
-                <span className="block text-sm text-white/60">
+                <span className="block text-sm text-hero-foreground/65">
                   {description}
                 </span>
               </span>
@@ -269,15 +273,15 @@ export function Hero() {
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ duration: 0.45, ease: [0.32, 0.72, 0, 1] }}
-              className="flex h-full w-full flex-col justify-between overflow-y-auto bg-main-900 px-6 py-8 sm:px-10 md:w-[55%]"
+              className="flex h-full w-full flex-col justify-between overflow-y-auto bg-background px-6 py-8 sm:px-10 md:w-[55%]"
             >
               <button
                 type="button"
                 onClick={() => setMenuOpen(false)}
-                className="flex items-center gap-2 self-start font-heading text-2xl uppercase leading-none tracking-wide text-white transition-colors hover:text-main-400"
+                className="flex items-center gap-2 self-start font-heading text-2xl uppercase leading-none tracking-wide text-foreground transition-colors hover:text-primary"
               >
                 Cerrar
-                <X className="size-6 text-main-400" aria-hidden />
+                <X className="size-6 text-primary" aria-hidden />
               </button>
 
               <nav aria-label="Navegación principal">
@@ -286,7 +290,7 @@ export function Hero() {
                     <Link
                       href={routes.home.page()}
                       onClick={() => setMenuOpen(false)}
-                      className="flex items-center gap-4 font-heading text-3xl uppercase leading-[1.1] text-main-400 sm:text-4xl"
+                      className="flex items-center gap-4 font-heading text-3xl uppercase leading-[1.1] text-primary sm:text-4xl"
                     >
                       <ArrowRight className="size-8" aria-hidden />
                       Inicio
@@ -330,7 +334,7 @@ export function Hero() {
                 alt="Ecos Fundation"
                 width={2560}
                 height={254}
-                className="h-auto w-32"
+                className="theme-logo h-auto w-40 sm:w-44"
               />
             </motion.div>
 
@@ -342,7 +346,7 @@ export function Hero() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="hidden flex-1 cursor-default bg-main-900/50 md:block"
+              className="hidden flex-1 cursor-default bg-foreground/35 md:block"
             />
           </div>
         )}

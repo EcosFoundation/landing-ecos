@@ -4,10 +4,12 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
+  CheckCircle2,
   ClipboardList,
   Eye,
   Gauge,
   HeartHandshake,
+  Recycle,
   TrendingUp,
   Users,
 } from "lucide-react";
@@ -93,30 +95,61 @@ export function CapabilitiesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewport}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mt-20 grid items-stretch gap-0 bg-main-900 md:grid-cols-[6fr_5fr]"
+          className="relative mt-20 grid items-stretch overflow-hidden bg-ecobit-night md:grid-cols-[6fr_5fr]"
         >
-          <div className="flex flex-col justify-center gap-6 p-8 sm:p-12">
-            <p className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.25em] text-accent-400">
-              <span className="h-px w-8 bg-accent-500" aria-hidden />
-              Innovación que trasciende
-            </p>
+          <div className="pointer-events-none absolute -left-24 -top-24 size-72 rounded-full bg-ecobit-green/10 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-24 right-1/4 size-72 rounded-full bg-ecobit-green/15 blur-3xl" />
 
-            <h3 className="font-heading text-3xl uppercase leading-[1.05] text-white sm:text-4xl lg:text-5xl">
-              ecobit
-            </h3>
+          <div className="relative flex flex-col justify-center gap-7 p-8 sm:p-12">
+            <Image
+              src="/proyectos/ecobit-logotype.webp"
+              alt="Ecobit"
+              width={1803}
+              height={501}
+              className="h-auto w-44 sm:w-52"
+            />
 
-            <p className="max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
-              Impulsamos ideas que se convierten en soluciones de alto impacto y
-              capaces de escalar. Ecobit nació desde ECOS y hoy es una
-              plataforma líder en gestión ambiental, incentivos y economía
-              circular: tecnología para una sostenibilidad medible.
-            </p>
+            <div className="flex flex-col gap-4">
+              <p className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.25em] text-ecobit-green">
+                <Recycle className="size-5 text-ecobit-yellow" aria-hidden />
+                Economía circular medible
+              </p>
+
+              <h3 className="max-w-xl text-3xl font-semibold leading-[1.08] text-white sm:text-4xl lg:text-5xl">
+                Soluciones de economía circular{" "}
+                <span className="italic text-ecobit-green">a tu medida</span>
+              </h3>
+
+              <p className="max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
+                Digitaliza la gestión de tus residuos, reduce costos y convierte
+                cada kilo valorizado en EcoBits, con trazabilidad verificada y
+                reportes en tiempo real.
+              </p>
+            </div>
+
+            <ul className="flex flex-wrap gap-x-6 gap-y-3 text-sm text-white/70">
+              {[
+                "Trazabilidad verificada",
+                "Reportes en tiempo real",
+                "EcoBits por cada kilo",
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-2">
+                  <CheckCircle2
+                    className="size-4 text-ecobit-green"
+                    aria-hidden
+                  />
+                  {item}
+                </li>
+              ))}
+            </ul>
 
             <a
-              href="#nexo"
-              className="group inline-flex w-fit items-center gap-3 border-b border-white/30 pb-1 font-heading text-lg uppercase leading-none text-white transition-colors hover:border-accent-500 hover:text-accent-400"
+              href="https://www.ecobit.eco/"
+              target="_blank"
+              rel="noreferrer"
+              className="group inline-flex w-fit items-center gap-3 border border-transparent bg-ecobit-green px-6 py-4 font-heading text-base uppercase leading-none tracking-wide text-ecobit-night transition-colors duration-300 hover:bg-white sm:text-lg"
             >
-              Conocer ecobit
+              Conocer Ecobit
               <ArrowRight
                 className="size-5 transition-transform duration-300 group-hover:translate-x-1"
                 aria-hidden
@@ -124,15 +157,20 @@ export function CapabilitiesSection() {
             </a>
           </div>
 
-          <figure className="relative min-h-[22rem] w-full">
+          <figure className="relative min-h-[25rem] w-full overflow-hidden border-white/10 md:border-l">
             <Image
-              src="/imagen.png"
-              alt="Vecina usando la aplicación de economía circular de ecobit"
+              src="/img/eco_bit.jpg"
+              alt="Equipo de Ecobit en un punto de recolección"
               fill
               sizes="(min-width: 768px) 40vw, 100vw"
               className="object-cover"
             />
-            <figcaption className="absolute bottom-4 left-4 bg-main-900/85 px-2 py-1 font-mono text-[11px] tracking-tight text-white">
+            <div className="absolute inset-0 bg-gradient-to-t from-ecobit-night/80 via-transparent to-transparent" />
+            <figcaption className="absolute bottom-5 left-5 flex items-center gap-2 rounded-full bg-ecobit-night/85 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-ecobit-green backdrop-blur-sm">
+              <span
+                className="size-2 rounded-full bg-ecobit-green"
+                aria-hidden
+              />
               Economía circular en acción
             </figcaption>
           </figure>

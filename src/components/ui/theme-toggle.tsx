@@ -38,7 +38,7 @@ export function ThemeToggle({ className }: Props) {
       type="button"
       onClick={toggleTheme}
       aria-label={isDark ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
-      className={`flex size-9 items-center justify-center border border-white/40 text-white transition-colors hover:border-main-400 hover:text-main-400 ${className ?? ""}`}
+      className={`flex size-9 items-center justify-center border border-foreground/40 text-foreground transition-colors hover:border-primary hover:text-primary ${className ?? ""}`}
     >
       {isDark ? (
         <Sun className="size-4.5" aria-hidden />

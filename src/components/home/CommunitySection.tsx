@@ -5,25 +5,53 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { RevealWords } from "@/components/home/RevealWords";
 import { SectionLabel } from "@/components/home/SectionLabel";
+import { cn } from "@/lib/utils";
 
 const viewport = { once: true, amount: 0.2 } as const;
 
 const communities = [
   {
-    name: "Enavol",
-    subtitle: "Comunidad Nacional de Voluntariado Juvenil",
+    name: "ENAVOL 2026",
+    subtitle: "Encuentro Nacional de Voluntariado",
     description:
-      "Conectamos y fortalecemos a jóvenes voluntarios que impulsan iniciativas que transforman sus comunidades.",
-    cta: "Conoce ENAVOL",
-    image: "/hero/hero2.jpg",
+      "El encuentro anual que conecta juventudes y organizaciones sociales para fortalecer el voluntariado, la Agenda 2030 y la innovación social en el Perú.",
+    cta: "Vive ENAVOL",
+    image: "/img/enavol.webp",
+    imageAlt: "Jóvenes participantes del Encuentro Nacional de Voluntariado",
+    logo: "/proyectos/logo-enavol.webp",
+    logoWidth: 1080,
+    logoHeight: 1080,
+    href: "https://enavol.ecosfoundation.ong/",
+    detail: "Moquegua, Perú",
+    stat: "20+ regiones",
+    surfaceClass: "bg-enavol-night",
+    overlayClass:
+      "bg-gradient-to-t from-enavol-night via-enavol-night/75 to-enavol-night/15",
+    accentClass: "text-enavol-orange",
+    lineClass: "bg-enavol-orange",
+    buttonClass: "bg-enavol-green text-enavol-night hover:bg-white",
   },
   {
     name: "Climate Fest",
-    subtitle: "Comunidad Internacional de Acción Climática",
+    subtitle: "Cumbre internacional desde la Amazonía",
     description:
-      "Un espacio que reúne líderes, innovadores y organizaciones para compartir soluciones frente a la crisis climática.",
-    cta: "Conoce Climate Fest",
-    image: "/hero/hero3.jpg",
+      "Cuatro días de liderazgo, innovación y acción climática desde uno de los territorios más estratégicos del planeta.",
+    cta: "Descubre Climate Fest",
+    image: "/img/climate_fest.jpg",
+    imageAlt: "Participantes de Climate Fest reunidos en Chachapoyas",
+    logo: "/proyectos/CLIMATE-FEST-LOGO%20(1).webp",
+    logoWidth: 96,
+    logoHeight: 96,
+    href: "https://climatefestglobal.org/en",
+    detail: "Chachapoyas, Amazonas",
+    stat: "17–20 julio 2026",
+    surfaceClass: "bg-climate-burgundy",
+    overlayClass:
+      "bg-gradient-to-t from-black/85 via-black/40 to-transparent",
+    accentClass: "text-climate-cream",
+    lineClass: "bg-climate-green",
+    buttonClass:
+      "bg-climate-green text-climate-burgundy hover:bg-climate-cream",
   },
 ];
 
@@ -65,7 +93,28 @@ export function CommunitySection() {
 
         <div className="mt-20 grid gap-8 lg:grid-cols-2 lg:gap-10">
           {communities.map(
-            ({ name, subtitle, description, cta, image }, index) => (
+            (
+              {
+                name,
+                subtitle,
+                description,
+                cta,
+                image,
+                imageAlt,
+                logo,
+                logoWidth,
+                logoHeight,
+                href,
+                detail,
+                stat,
+                surfaceClass,
+                overlayClass,
+                accentClass,
+                lineClass,
+                buttonClass,
+              },
+              index,
+            ) => (
               <motion.article
                 key={name}
                 initial={{ opacity: 0, y: 30 }}
@@ -76,40 +125,83 @@ export function CommunitySection() {
                   ease: "easeOut",
                   delay: index * 0.15,
                 }}
-                className="group relative isolate flex min-h-[28rem] flex-col justify-end overflow-hidden bg-main-900 p-8 sm:p-10"
+                className={cn(
+                  "group relative isolate flex min-h-[34rem] flex-col justify-between overflow-hidden p-8 sm:p-10",
+                  surfaceClass,
+                )}
               >
                 <Image
                   src={image}
-                  alt=""
+                  alt={imageAlt}
                   fill
                   sizes="(min-width: 1024px) 48vw, 100vw"
                   className="-z-10 object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
                 />
-                <div className="absolute inset-0 -z-10 bg-gradient-to-t from-main-900 via-main-900/75 to-main-900/25" />
+                <div
+                  className={cn("absolute inset-0 -z-10", overlayClass)}
+                />
 
-                <p className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.25em] text-accent-400">
-                  <span className="h-px w-8 bg-accent-500" aria-hidden />
-                  {subtitle}
-                </p>
+                <div className="flex items-start justify-between gap-4">
+                  <span className="flex size-20 items-center justify-center rounded-2xl bg-white/95 p-3 shadow-xl backdrop-blur-sm">
+                    <Image
+                      src={logo}
+                      alt=""
+                      width={logoWidth}
+                      height={logoHeight}
+                      className="size-full object-contain"
+                    />
+                  </span>
+                  <span className="rounded-full border border-white/25 bg-black/10 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-white backdrop-blur-sm">
+                    Proyecto ECOS
+                  </span>
+                </div>
 
-                <h3 className="mt-4 font-heading text-4xl uppercase leading-none text-white sm:text-5xl">
-                  {name}
-                </h3>
+                <div>
+                  <p
+                    className={cn(
+                      "flex items-center gap-3 font-mono text-xs uppercase tracking-[0.22em]",
+                      accentClass,
+                    )}
+                  >
+                    <span className={cn("h-px w-8", lineClass)} aria-hidden />
+                    {subtitle}
+                  </p>
 
-                <p className="mt-4 max-w-md text-base leading-relaxed text-white/70 sm:text-lg">
-                  {description}
-                </p>
+                  <h3 className="mt-4 font-heading text-4xl uppercase leading-none text-white sm:text-5xl">
+                    {name}
+                  </h3>
 
-                <a
-                  href="#nexo"
-                  className="mt-7 inline-flex w-fit items-center gap-3 border-b border-white/30 pb-1 font-heading text-base uppercase leading-none text-white transition-colors hover:border-accent-500 hover:text-accent-400"
-                >
-                  {cta}
-                  <ArrowRight
-                    className="size-4 transition-transform duration-300 group-hover:translate-x-1"
-                    aria-hidden
-                  />
-                </a>
+                  <p className="mt-4 max-w-lg text-base leading-relaxed text-white/75 sm:text-lg">
+                    {description}
+                  </p>
+
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {[detail, stat].map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-full border border-white/20 bg-black/10 px-3 py-1.5 text-xs font-medium text-white/85 backdrop-blur-sm"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={cn(
+                      "mt-7 inline-flex w-fit items-center gap-3 border border-transparent px-6 py-4 font-heading text-base uppercase leading-none tracking-wide transition-colors duration-300 sm:text-lg",
+                      buttonClass,
+                    )}
+                  >
+                    {cta}
+                    <ArrowRight
+                      className="size-4 transition-transform duration-300 group-hover:translate-x-1"
+                      aria-hidden
+                    />
+                  </a>
+                </div>
               </motion.article>
             ),
           )}
