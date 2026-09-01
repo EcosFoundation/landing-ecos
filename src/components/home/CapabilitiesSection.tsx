@@ -31,7 +31,7 @@ export function CapabilitiesSection() {
   return (
     <section
       id="capacidades"
-      className="relative w-full overflow-hidden bg-background py-24 sm:py-32"
+      className="relative w-full overflow-hidden bg-background py-16 sm:py-24 md:py-32"
     >
       <div className="w-full px-6 sm:px-10 lg:px-14">
         <motion.div
@@ -43,15 +43,45 @@ export function CapabilitiesSection() {
           <SectionLabel number="03" title="Capacidades" />
         </motion.div>
 
-        <div className="mt-16 grid gap-14 md:grid-cols-[5fr_7fr] lg:gap-24">
-          <h2 className="font-heading text-4xl uppercase leading-[1.02] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+        <div className="mt-10 grid gap-9 sm:mt-12 sm:gap-12 md:mt-16 md:grid-cols-[5fr_7fr] md:gap-14 lg:gap-24">
+          <h2 className="font-heading text-3xl uppercase leading-[1.02] tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-6xl">
             <RevealWords text="Tenemos la capacidad de" />
             <span className="block text-main-600 dark:text-main-300">
               <RevealWords text="llevarlo al territorio" delay={0.2} />
             </span>
           </h2>
 
-          <ul className="grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="grid grid-cols-2 border-l border-t border-border md:hidden">
+            {capabilities.map(({ title, Icon }, index) => (
+              <li
+                key={title}
+                className="relative min-h-32 border-b border-r border-border bg-card p-4 sm:min-h-36 sm:p-5"
+              >
+                <span
+                  className="absolute right-4 top-4 font-mono text-[10px] tracking-[0.16em] text-muted-foreground sm:right-5 sm:top-5"
+                  aria-hidden
+                >
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+
+                <div className="flex h-full flex-col justify-between gap-3">
+                  <span className="flex size-9 items-center justify-center border border-foreground/20 text-primary">
+                    <Icon
+                      className="size-4"
+                      strokeWidth={1.5}
+                      aria-hidden
+                    />
+                  </span>
+
+                  <p className="max-w-[20ch] text-sm leading-snug text-foreground sm:text-base">
+                    {title}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          <ul className="hidden gap-x-10 gap-y-12 md:grid lg:grid-cols-3">
             {capabilities.map(({ title, Icon }, index) => (
               <li key={title} className="group relative">
                 <motion.span
@@ -95,18 +125,18 @@ export function CapabilitiesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewport}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative mt-20 grid items-stretch overflow-hidden bg-ecobit-night md:grid-cols-[5fr_7fr]"
+          className="relative mt-12 grid items-stretch overflow-hidden bg-ecobit-night sm:mt-20 md:grid-cols-[5fr_7fr]"
         >
           <div className="pointer-events-none absolute -left-24 -top-24 size-72 rounded-full bg-ecobit-green/10 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-24 right-1/4 size-72 rounded-full bg-ecobit-green/15 blur-3xl" />
 
-          <div className="relative flex flex-col justify-center gap-7 p-8 sm:p-12">
+          <div className="relative flex flex-col justify-center gap-5 p-6 sm:gap-7 sm:p-12">
             <Image
               src="/proyectos/ecobit-logotype.webp"
               alt="Ecobit"
               width={1803}
               height={501}
-              className="h-auto w-44 sm:w-52"
+              className="h-auto w-40 sm:w-52"
             />
 
             <div className="flex flex-col gap-4">
@@ -157,7 +187,7 @@ export function CapabilitiesSection() {
             </a>
           </div>
 
-          <figure className="relative flex min-h-80 w-full items-center justify-center overflow-hidden border-white/10 px-5 py-10 sm:min-h-[26rem] sm:px-10 md:min-h-full md:border-l md:px-6 lg:px-10">
+          <figure className="relative flex h-64 w-full items-center justify-center overflow-hidden border-white/10 px-4 py-6 sm:h-auto sm:min-h-[26rem] sm:px-10 sm:py-10 md:min-h-full md:border-l md:px-6 lg:px-10">
             <div className="pointer-events-none absolute inset-x-[12%] top-1/2 h-1/2 -translate-y-1/2 rounded-full bg-ecobit-green/15 blur-3xl" />
             <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-ecobit-green/25" />
             <Image

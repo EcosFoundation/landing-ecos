@@ -96,7 +96,7 @@ export function Hero() {
     "group flex items-center gap-4 font-heading text-3xl uppercase leading-[1.1] text-foreground transition-colors hover:text-primary sm:text-4xl";
 
   return (
-    <section className="relative isolate min-h-screen w-full overflow-hidden bg-hero-surface">
+    <section className="relative isolate flex min-h-[100svh] w-full flex-col overflow-hidden bg-hero-surface md:min-h-screen">
       <motion.div
         style={{ scale: backgroundScale }}
         className="absolute inset-0 z-0"
@@ -121,7 +121,8 @@ export function Hero() {
 
       <div className="hero-scrim pointer-events-none absolute inset-0 z-10" />
       <div className="hero-top-scrim pointer-events-none absolute inset-x-0 top-0 z-10 h-40" />
-      <div className="hero-bottom-scrim pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[70%]" />
+      <div className="hero-bottom-scrim pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[88%] md:h-[70%]" />
+      <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-r from-hero-surface/35 via-transparent to-transparent md:hidden" />
 
       <motion.header
         initial={{ opacity: 0, y: -12 }}
@@ -132,55 +133,56 @@ export function Hero() {
         <button
           type="button"
           onClick={() => setMenuOpen(true)}
-          className="flex items-center gap-2 font-heading text-2xl uppercase leading-none tracking-wide text-hero-foreground transition-colors hover:text-hero-primary"
+          className="flex min-h-11 items-center gap-2 font-heading text-2xl uppercase leading-none tracking-wide text-hero-foreground transition-colors hover:text-hero-primary"
         >
           <Menu className="size-6" aria-hidden />
           Menú
         </button>
 
-        <div className="flex items-center gap-4">
-          <ThemeToggle className="border-hero-foreground/40 text-hero-foreground hover:border-hero-primary hover:text-hero-primary" />
+        <div className="flex items-center gap-2 sm:gap-4">
+          <ThemeToggle className="size-11 border-hero-foreground/40 text-hero-foreground hover:border-hero-primary hover:text-hero-primary sm:size-9" />
           <Image
             src="/logo.png"
             alt="Ecos Fundation"
             width={2560}
             height={254}
-            className="hero-logo h-auto w-32 sm:w-40"
+            className="hero-logo h-auto w-28 sm:w-40"
           />
         </div>
       </motion.header>
 
       <motion.div
         style={{ y: contentY, opacity: contentOpacity }}
-        className="hero-copy absolute inset-x-0 bottom-0 z-20 flex flex-col gap-10 px-6 pb-10 sm:px-10"
+        className="hero-copy relative z-20 mt-auto flex flex-col gap-6 px-6 pb-6 pt-28 sm:gap-10 sm:px-10 sm:pb-10 md:absolute md:inset-x-0 md:bottom-0 md:pt-0"
       >
-        <div className="grid gap-10 md:grid-cols-[7fr_5fr] md:items-end lg:gap-16">
+        <div className="grid gap-6 md:grid-cols-[7fr_5fr] md:items-end md:gap-10 lg:gap-16">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
           >
-            <h1 className="font-heading uppercase leading-[0.95] tracking-tight text-hero-foreground">
-              <span className="block text-4xl sm:text-6xl lg:text-7xl">
+            <h1 className="font-heading text-[clamp(2rem,9.8vw,2.65rem)] uppercase leading-[0.92] tracking-tight text-hero-foreground sm:text-6xl sm:leading-[0.95] lg:text-7xl">
+              <span className="block">
                 Transformamos
               </span>
-              <span className="block text-4xl sm:text-6xl lg:text-7xl">
+              <span className="block">
                 desafíos en{" "}
                 <span className="text-hero-primary">proyectos</span>
               </span>
-              <span className="block text-4xl sm:text-6xl lg:text-7xl">
+              <span className="block">
                 que generan <span className="text-hero-primary">impacto</span>
               </span>
             </h1>
 
-            <div className="mt-6 flex items-center gap-6">
-              <p className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-hero-foreground/70">
-                Desliza para explorar
+            <div className="mt-4 hidden items-center justify-between gap-4 sm:mt-6 sm:flex sm:justify-start sm:gap-6">
+              <p className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-hero-foreground/70 sm:text-[11px] sm:tracking-[0.25em]">
+                <span className="sm:hidden">Explora</span>
+                <span className="hidden sm:inline">Desliza para explorar</span>
                 <ArrowDown className="size-3.5" aria-hidden />
               </p>
 
               <div
-                className="flex items-center gap-1.5"
+                className="flex items-center"
                 role="tablist"
                 aria-label="Imágenes del hero"
               >
@@ -192,12 +194,17 @@ export function Hero() {
                     aria-selected={index === activeSlide}
                     aria-label={`Imagen ${index + 1}`}
                     onClick={() => setActiveSlide(index)}
-                    className={`h-0.5 w-6 transition-colors duration-300 ${
-                      index === activeSlide
-                        ? "bg-hero-primary"
-                        : "bg-hero-foreground/25"
-                    }`}
-                  />
+                    className="flex size-11 items-center justify-center"
+                  >
+                    <span
+                      className={`h-0.5 w-6 transition-colors duration-300 ${
+                        index === activeSlide
+                          ? "bg-hero-primary"
+                          : "bg-hero-foreground/25"
+                      }`}
+                      aria-hidden
+                    />
+                  </button>
                 ))}
               </div>
             </div>
@@ -207,33 +214,41 @@ export function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.25 }}
-            className="flex max-w-xl flex-col gap-6 md:ml-auto md:items-end md:text-right"
+            className="flex max-w-xl flex-col gap-4 sm:gap-6 md:ml-auto md:items-end md:text-right"
           >
-            <p className="text-base leading-relaxed text-hero-foreground/80 sm:text-lg">
-              Diseñamos, implementamos y articulamos proyectos de innovación y
-              sostenibilidad que conectan personas, instituciones y recursos
-              para construir un futuro sostenible.
+            <p className="text-[15px] leading-relaxed text-hero-foreground/80 sm:text-lg">
+              <span className="md:hidden">
+                Conectamos personas, instituciones y recursos para convertir
+                desafíos en proyectos sostenibles.
+              </span>
+              <span className="hidden md:inline">
+                Diseñamos, implementamos y articulamos proyectos de innovación
+                y sostenibilidad que conectan personas, instituciones y
+                recursos para construir un futuro sostenible.
+              </span>
             </p>
 
-            <div className="flex flex-wrap items-center gap-3 md:justify-end">
+            <div className="grid w-full grid-cols-2 gap-2 sm:gap-3 md:flex md:w-auto md:flex-wrap md:items-center md:justify-end">
               <a
                 href="#proyectos"
-                className="group inline-flex items-center gap-3 border border-transparent bg-accent-500 px-6 py-4 font-heading text-base uppercase leading-none tracking-wide text-main-900 transition-colors duration-300 hover:bg-accent-400 sm:text-lg"
+                className="group inline-flex min-w-0 items-center justify-center gap-1.5 border border-transparent bg-accent-500 px-2.5 py-3.5 text-center font-heading text-[13px] uppercase leading-none tracking-wide text-main-900 transition-colors duration-300 hover:bg-accent-400 sm:gap-3 sm:px-6 sm:py-4 sm:text-lg"
               >
-                Conoce nuestros proyectos
+                <span className="sm:hidden">Ver proyectos</span>
+                <span className="hidden sm:inline">Conoce nuestros proyectos</span>
                 <ArrowRight
-                  className="size-5 transition-transform duration-300 group-hover:translate-x-1"
+                  className="size-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1 sm:size-5"
                   aria-hidden
                 />
               </a>
 
               <a
                 href="#nexo"
-                className="group inline-flex items-center gap-3 border border-hero-foreground/40 bg-hero-surface/45 px-6 py-4 font-heading text-base uppercase leading-none tracking-wide text-hero-foreground backdrop-blur-sm transition-colors duration-300 hover:border-hero-foreground hover:bg-hero-foreground hover:text-hero-surface sm:text-lg"
+                className="group inline-flex min-w-0 items-center justify-center gap-1.5 border border-hero-foreground/40 bg-hero-surface/45 px-2.5 py-3.5 text-center font-heading text-[13px] uppercase leading-none tracking-wide text-hero-foreground backdrop-blur-sm transition-colors duration-300 hover:border-hero-foreground hover:bg-hero-foreground hover:text-hero-surface sm:gap-3 sm:px-6 sm:py-4 sm:text-lg"
               >
-                Trabaja con ECOS
+                <span className="sm:hidden">Únete a ECOS</span>
+                <span className="hidden sm:inline">Trabaja con ECOS</span>
                 <ArrowRight
-                  className="size-5 transition-transform duration-300 group-hover:translate-x-1"
+                  className="size-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1 sm:size-5"
                   aria-hidden
                 />
               </a>
@@ -245,18 +260,21 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.4 }}
-          className="grid gap-6 border-t border-hero-foreground/15 pt-6 sm:grid-cols-3"
+          className="grid grid-cols-3 gap-2 border-t border-hero-foreground/15 pt-4 sm:gap-6 sm:pt-6"
         >
           {pillars.map(({ title, description, Icon }) => (
-            <li key={title} className="flex items-center justify-center gap-4">
-              <span className="flex size-11 shrink-0 items-center justify-center rounded-full border border-hero-foreground/30 text-hero-primary">
-                <Icon className="size-5" strokeWidth={1.75} aria-hidden />
+            <li
+              key={title}
+              className="flex min-w-0 flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-center sm:gap-4"
+            >
+              <span className="flex size-9 shrink-0 items-center justify-center rounded-full border border-hero-foreground/30 text-hero-primary sm:size-11">
+                <Icon className="size-4 sm:size-5" strokeWidth={1.75} aria-hidden />
               </span>
-              <span>
-                <span className="block font-heading text-lg uppercase leading-none text-hero-foreground">
+              <span className="min-w-0">
+                <span className="block font-heading text-xs uppercase leading-none text-hero-foreground sm:text-lg">
                   {title}
                 </span>
-                <span className="block text-sm text-hero-foreground/65">
+                <span className="hidden text-sm text-hero-foreground/65 sm:block">
                   {description}
                 </span>
               </span>
