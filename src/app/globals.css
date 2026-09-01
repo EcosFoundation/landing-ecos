@@ -45,6 +45,11 @@
   --color-hero-surface: var(--hero-surface);
   --color-hero-foreground: var(--hero-foreground);
   --color-hero-primary: var(--hero-primary);
+  --color-section-label: var(--section-label);
+  --color-section-label-foreground: var(--section-label-foreground);
+  --color-project-action: var(--project-action);
+  --color-project-action-foreground: var(--project-action-foreground);
+  --color-project-action-hover: var(--project-action-hover);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-heading);
@@ -167,6 +172,11 @@
   --hero-surface: var(--main-800);
   --hero-foreground: oklch(0.985 0.008 188);
   --hero-primary: var(--main-200);
+  --section-label: var(--main-700);
+  --section-label-foreground: oklch(1 0 0);
+  --project-action: var(--ecobit-green);
+  --project-action-foreground: var(--ecobit-night);
+  --project-action-hover: oklch(1 0 0);
   --hero-scrim: color-mix(in oklab, var(--main-800) 3%, transparent);
   --hero-top-scrim: linear-gradient(
     to bottom,
@@ -184,20 +194,20 @@
 }
 
 .dark {
-  /* Turquesa nocturno inspirado en el color principal del logo de ECOS. */
-  --fill: oklch(0.255 0.05 188);
+  /* Verde bosque sereno: más humano y cercano para la identidad de una ONG. */
+  --fill: oklch(0.305 0.052 174);
 
   --background: var(--fill);
   --foreground: oklch(0.975 0.012 188);
-  --card: oklch(0.3 0.052 188);
+  --card: oklch(0.345 0.05 174);
   --card-foreground: oklch(0.975 0.012 188);
-  --popover: oklch(0.3 0.052 188);
+  --popover: oklch(0.345 0.05 174);
   --popover-foreground: oklch(0.975 0.012 188);
   --primary: var(--main-400);
   --primary-foreground: var(--main-900);
   --secondary: oklch(0.34 0.048 188);
   --secondary-foreground: oklch(0.975 0.012 188);
-  --muted: oklch(0.315 0.038 188);
+  --muted: var(--fill);
   --muted-foreground: oklch(0.79 0.025 188);
   --accent: oklch(0.32 0.045 70);
   --accent-foreground: var(--accent-200);
@@ -210,11 +220,11 @@
   --chart-3: var(--main-200);
   --chart-4: var(--accent-200);
   --chart-5: var(--main-200);
-  --sidebar: oklch(0.3 0.052 188);
+  --sidebar: oklch(0.345 0.05 174);
   --sidebar-foreground: oklch(0.975 0.012 188);
   --sidebar-primary: var(--main-400);
   --sidebar-primary-foreground: var(--main-900);
-  --sidebar-accent: oklch(0.34 0.048 188);
+  --sidebar-accent: oklch(0.38 0.046 174);
   --sidebar-accent-foreground: oklch(0.975 0.012 188);
   --sidebar-border: oklch(1 0 0 / 16%);
   --sidebar-ring: var(--main-400);
@@ -223,6 +233,11 @@
   --hero-surface: var(--background);
   --hero-foreground: var(--foreground);
   --hero-primary: var(--primary);
+  --section-label: oklch(1 0 0);
+  --section-label-foreground: var(--main-900);
+  --project-action: var(--ecobit-green);
+  --project-action-foreground: var(--ecobit-night);
+  --project-action-hover: oklch(1 0 0);
   --hero-scrim: color-mix(in oklab, var(--background) 18%, transparent);
   --hero-top-scrim: linear-gradient(
     to bottom,
@@ -268,5 +283,56 @@
   }
   .hero-copy {
     text-shadow: var(--hero-copy-shadow);
+  }
+}
+
+@keyframes allies-marquee-forward {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes allies-marquee-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.allies-marquee-mask {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+}
+
+.allies-marquee-track {
+  animation: allies-marquee-forward 42s linear infinite;
+}
+
+.allies-marquee-track-reverse {
+  animation-name: allies-marquee-reverse;
+  animation-duration: 46s;
+}
+
+.allies-marquee-mask:hover .allies-marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .allies-marquee-track,
+  .allies-marquee-track-reverse {
+    animation: none;
+  }
+
+  .allies-marquee-mask {
+    overflow-x: auto;
+  }
+
+  .allies-marquee-track > ul[aria-hidden="true"] {
+    display: none;
   }
 }

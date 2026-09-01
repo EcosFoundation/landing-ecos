@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { RevealWords } from "@/components/home/RevealWords";
 import { SectionLabel } from "@/components/home/SectionLabel";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const viewport = { once: true, amount: 0.2 } as const;
@@ -29,7 +30,6 @@ const communities = [
       "bg-gradient-to-t from-enavol-night via-enavol-night/75 to-enavol-night/15",
     accentClass: "text-enavol-orange",
     lineClass: "bg-enavol-orange",
-    buttonClass: "bg-enavol-green text-enavol-night hover:bg-white",
   },
   {
     name: "Climate Fest",
@@ -37,7 +37,7 @@ const communities = [
     description:
       "Cuatro días de liderazgo, innovación y acción climática desde uno de los territorios más estratégicos del planeta.",
     cta: "Descubre Climate Fest",
-    image: "/img/climate_fest.jpg",
+    image: "/img/chachapoyas.png",
     imageAlt: "Participantes de Climate Fest reunidos en Chachapoyas",
     logo: "/proyectos/CLIMATE-FEST-LOGO%20(1).webp",
     logoWidth: 96,
@@ -50,8 +50,6 @@ const communities = [
       "bg-gradient-to-t from-black/85 via-black/40 to-transparent",
     accentClass: "text-climate-cream",
     lineClass: "bg-climate-green",
-    buttonClass:
-      "bg-climate-green text-climate-burgundy hover:bg-climate-cream",
   },
 ];
 
@@ -111,7 +109,6 @@ export function CommunitySection() {
                 overlayClass,
                 accentClass,
                 lineClass,
-                buttonClass,
               },
               index,
             ) => (
@@ -186,21 +183,16 @@ export function CommunitySection() {
                     ))}
                   </div>
 
-                  <a
-                    href={href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className={cn(
-                      "mt-7 inline-flex w-fit items-center gap-3 border border-transparent px-6 py-4 font-heading text-base uppercase leading-none tracking-wide transition-colors duration-300 sm:text-lg",
-                      buttonClass,
-                    )}
-                  >
-                    {cta}
-                    <ArrowRight
-                      className="size-4 transition-transform duration-300 group-hover:translate-x-1"
-                      aria-hidden
-                    />
-                  </a>
+                  <Button asChild variant="project" size="cta" className="mt-7">
+                    <a href={href} target="_blank" rel="noreferrer">
+                      {cta}
+                      <ArrowRight
+                        data-icon="inline-end"
+                        className="transition-transform duration-300 group-hover/button:translate-x-1"
+                        aria-hidden
+                      />
+                    </a>
+                  </Button>
                 </div>
               </motion.article>
             ),
