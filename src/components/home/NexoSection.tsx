@@ -66,7 +66,7 @@ export function NexoSection() {
 
           <div className="relative grid lg:grid-cols-[7fr_5fr]">
             <div className="flex flex-col justify-between gap-10 border-b border-white/10 p-8 sm:p-12 lg:border-b-0 lg:border-r">
-              <div className="flex flex-col gap-7">
+              <div className="flex flex-col items-center gap-7 text-center sm:items-start sm:text-left">
                 <span className="w-fit rounded-2xl bg-white px-5 py-3 shadow-xl">
                   <Image
                     src="/proyectos/image.png"
@@ -78,9 +78,12 @@ export function NexoSection() {
                 </span>
 
                 <div className="flex flex-col gap-4">
-                  <p className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.25em] text-nexo-green">
+                  <p className="flex items-center justify-center gap-2 whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.16em] text-nexo-green sm:justify-start sm:gap-3 sm:text-xs sm:tracking-[0.25em]">
                     Perú
-                    <span className="h-px w-8 bg-nexo-green" aria-hidden />
+                    <span
+                      className="h-px w-6 bg-nexo-green sm:w-8"
+                      aria-hidden
+                    />
                     Plataforma de impacto
                   </p>
 
@@ -97,12 +100,12 @@ export function NexoSection() {
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:items-stretch">
                 <a
                   href="https://nexo.ecosfoundation.ong/"
                   target="_blank"
                   rel="noreferrer"
-                  className="group inline-flex items-center gap-3 border border-transparent bg-nexo-yellow px-6 py-4 font-heading text-base uppercase leading-none tracking-wide text-nexo-night transition-colors duration-300 hover:bg-white sm:text-lg"
+                  className="group inline-flex w-full max-w-56 items-center justify-between gap-3 border border-transparent bg-nexo-yellow px-6 py-4 font-heading text-base uppercase leading-none tracking-wide text-nexo-night transition-colors duration-300 hover:bg-white sm:w-auto sm:max-w-none sm:text-lg"
                 >
                   Explorar causas
                   <ArrowRight
@@ -114,7 +117,7 @@ export function NexoSection() {
                   href="https://nexo.ecosfoundation.ong/"
                   target="_blank"
                   rel="noreferrer"
-                  className="group inline-flex items-center gap-3 border border-white/30 px-6 py-4 font-heading text-base uppercase leading-none tracking-wide text-white transition-colors hover:border-nexo-green hover:text-nexo-green sm:text-lg"
+                  className="group inline-flex w-full max-w-56 items-center justify-between gap-3 border border-white/30 px-6 py-4 font-heading text-base uppercase leading-none tracking-wide text-white transition-colors hover:border-nexo-green hover:text-nexo-green sm:w-auto sm:max-w-none sm:text-lg"
                 >
                   Subir proyecto
                   <ArrowRight
