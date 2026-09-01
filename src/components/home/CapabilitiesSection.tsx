@@ -95,7 +95,7 @@ export function CapabilitiesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewport}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative mt-20 grid items-stretch overflow-hidden bg-ecobit-night md:grid-cols-[6fr_5fr]"
+          className="relative mt-20 grid items-stretch overflow-hidden bg-ecobit-night md:grid-cols-[5fr_7fr]"
         >
           <div className="pointer-events-none absolute -left-24 -top-24 size-72 rounded-full bg-ecobit-green/10 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-24 right-1/4 size-72 rounded-full bg-ecobit-green/15 blur-3xl" />
@@ -157,21 +157,23 @@ export function CapabilitiesSection() {
             </a>
           </div>
 
-          <figure className="relative min-h-[25rem] w-full overflow-hidden border-white/10 md:border-l">
+          <figure className="relative flex min-h-80 w-full items-center justify-center overflow-hidden border-white/10 px-5 py-10 sm:min-h-[26rem] sm:px-10 md:min-h-full md:border-l md:px-6 lg:px-10">
+            <div className="pointer-events-none absolute inset-x-[12%] top-1/2 h-1/2 -translate-y-1/2 rounded-full bg-ecobit-green/15 blur-3xl" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-ecobit-green/25" />
             <Image
-              src="/img/eco_bit.jpg"
-              alt="Equipo de Ecobit en un punto de recolección"
-              fill
-              sizes="(min-width: 768px) 40vw, 100vw"
-              className="object-cover"
+              src="/img/mockup.png"
+              alt="Aplicación móvil y plataforma web de EcoBit para la gestión y trazabilidad de residuos"
+              width={1080}
+              height={608}
+              sizes="(min-width: 1280px) 58vw, (min-width: 768px) 55vw, 100vw"
+              className="relative h-auto w-full object-contain md:w-[112%] md:max-w-none"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-ecobit-night/80 via-transparent to-transparent" />
-            <figcaption className="absolute bottom-5 left-5 flex items-center gap-2 rounded-full bg-ecobit-night/85 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-ecobit-green backdrop-blur-sm">
+            <figcaption className="absolute bottom-5 left-5 flex items-center gap-2 rounded-full border border-white/10 bg-ecobit-night/80 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-ecobit-green backdrop-blur-sm sm:left-8">
               <span
                 className="size-2 rounded-full bg-ecobit-green"
                 aria-hidden
               />
-              Economía circular en acción
+              App móvil + plataforma web
             </figcaption>
           </figure>
         </motion.div>
