@@ -146,7 +146,7 @@ export function Hero() {
             alt="Ecos Fundation"
             width={2560}
             height={254}
-            className="hero-logo h-auto w-28 sm:w-40"
+            className="hero-logo h-auto w-32 sm:w-48"
           />
         </div>
       </motion.header>

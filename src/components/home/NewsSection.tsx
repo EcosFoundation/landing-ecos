@@ -20,14 +20,14 @@ const news = [
     tag: "Alianza",
     title: "Nueva alianza con CAF para proyectos sostenibles",
     description: "Trabajamos juntos por territorios más resilientes.",
-    image: "/hero5.png",
+    image: "/img/saludando.png",
   },
   {
     tag: "Evento",
-    title: "Encuentro reunió a jóvenes líderes del país",
+    title: "ENAVOL reunió a jóvenes líderes del país",
     description:
       "Más de 300 voluntarios compartieron experiencias e iniciativas.",
-    image: "/hero/hero2.jpg",
+    image: "/img/enavol.webp",
   },
   {
     tag: "Proyecto",
