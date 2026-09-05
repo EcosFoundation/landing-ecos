@@ -1,7 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
 import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
-import { routes } from "@/shared/routes";
 
 const columns = [
   {
@@ -47,8 +45,8 @@ const columns = [
 ];
 
 const contact = [
-  { label: "hola@ecosfoundation.org", Icon: Mail },
-  { label: "+51 933 123 456", Icon: Phone },
+  { label: "contacto@ecosfoundation.ong", Icon: Mail },
+  { label: "+51 972 665 388", Icon: Phone },
   { label: "Perú", Icon: MapPin },
 ];
 
@@ -115,8 +113,10 @@ export function SiteFooter() {
             ))}
           </ul>
 
-          <Link
-            href={routes.payments.page()}
+          <a
+            href="https://nexo.ecosfoundation.ong/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group mt-2 inline-flex w-fit items-center gap-3 border-b border-white/30 pb-1 font-heading text-lg uppercase leading-none text-white transition-colors hover:border-accent-500 hover:text-accent-400"
           >
             Colabora con ECOS
@@ -124,7 +124,7 @@ export function SiteFooter() {
               className="size-5 transition-transform duration-300 group-hover:translate-x-1"
               aria-hidden
             />
-          </Link>
+          </a>
         </div>
       </div>
 
