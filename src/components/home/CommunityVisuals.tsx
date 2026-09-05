@@ -260,13 +260,25 @@ export function EnavolNetworkVisual() {
         </text>
 
         <text
+          x="360"
+          y="424"
+          textAnchor="middle"
+          fill="white"
+          fillOpacity="0.45"
+          fontSize="7"
+          letterSpacing="1.8"
+          className="hidden sm:inline lg:hidden"
+        >
+          PERSONAS · REGIONES · PROPÓSITO COMPARTIDO
+        </text>
+        <text
           x="42"
           y="424"
           fill="white"
           fillOpacity="0.45"
           fontSize="9"
           letterSpacing="2.4"
-          className="hidden sm:inline"
+          className="hidden lg:inline"
         >
           PERSONAS · REGIONES · PROPÓSITO COMPARTIDO
         </text>
@@ -417,13 +429,37 @@ export function ClimateAtlasVisual() {
         </text>
 
         <text
+          x="410"
+          y="500"
+          textAnchor="middle"
+          fill="white"
+          fillOpacity="0.45"
+          fontSize="7"
+          letterSpacing="1.6"
+          className="hidden sm:inline lg:hidden"
+        >
+          TERRITORIO · CONOCIMIENTO · ACCIÓN GLOBAL
+        </text>
+        <text
+          x="410"
+          y="518"
+          textAnchor="middle"
+          fill="var(--climate-green)"
+          fillOpacity="0.55"
+          fontSize="7"
+          letterSpacing="1.4"
+          className="hidden sm:inline lg:hidden"
+        >
+          06°13′S · 77°51′O
+        </text>
+        <text
           x="42"
           y="520"
           fill="white"
           fillOpacity="0.45"
           fontSize="9"
           letterSpacing="2.4"
-          className="hidden sm:inline"
+          className="hidden lg:inline"
         >
           TERRITORIO · CONOCIMIENTO · ACCIÓN GLOBAL
         </text>
@@ -435,7 +471,7 @@ export function ClimateAtlasVisual() {
           fillOpacity="0.55"
           fontSize="9"
           letterSpacing="2"
-          className="hidden sm:inline"
+          className="hidden lg:inline"
         >
           06°13′S · 77°51′O
         </text>

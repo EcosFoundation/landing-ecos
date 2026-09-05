@@ -20,14 +20,14 @@ const news = [
     tag: "Alianza",
     title: "Nueva alianza con CAF para proyectos sostenibles",
     description: "Trabajamos juntos por territorios más resilientes.",
-    image: "/hero5.png",
+    image: "/img/saludando.png",
   },
   {
     tag: "Evento",
     title: "ENAVOL reunió a jóvenes líderes del país",
     description:
       "Más de 300 voluntarios compartieron experiencias e iniciativas.",
-    image: "/hero/hero2.jpg",
+    image: "/img/enavol.webp",
   },
   {
     tag: "Proyecto",
@@ -103,7 +103,7 @@ export function NewsSection() {
               <div className="relative aspect-[4/3] w-full overflow-hidden bg-main-900">
                 <Image
                   src={image}
-                  alt=""
+                  alt={title}
                   fill
                   sizes="(min-width: 1280px) 23vw, (min-width: 640px) 45vw, 100vw"
                   className="object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105"
